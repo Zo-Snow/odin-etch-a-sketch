@@ -14,6 +14,10 @@ window.addEventListener("mouseup", () => {
 createGrids(defaultNum);
 document.querySelector(".apply").addEventListener('click', setGrids);
 document.querySelector(".clear").addEventListener('click', clearGrids);
+document.querySelector(".rainbow").addEventListener('click', setRainbow);
+document.querySelector(".black").addEventListener('click', setBlack);
+
+// Functions
 
 function createGrids(num) {
 
@@ -27,12 +31,36 @@ for (let i = 0; i < num; i++) {
     square.classList = "square";
     column.appendChild(square);
 
-    square.addEventListener('mousemove', (event) => {
+    square.addEventListener('mousemove', () => {
         if (isDrawing) {square.style = "background-color: black";}
     })
 }
 }
+}
 
+function randomRGB() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+
+    return "rgb(" + r + "," + g + "," + b + ")";
+}
+
+function setRainbow() {
+    let color = randomRGB();
+    document.querySelectorAll('.square').forEach((box) => {
+        box.addEventListener('mousemove', () => {
+            if (isDrawing) {box.style = `background-color: ${randomRGB()}`;}
+        })
+    })  
+}
+
+function setBlack() {
+    document.querySelectorAll('.square').forEach((box) => {
+        box.addEventListener('mousemove', () => {
+            if (isDrawing) {box.style = "background-color: black";}
+        })
+    }) 
 }
 
 function setGrids() {

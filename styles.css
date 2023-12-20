@@ -7,6 +7,12 @@ body {
     background-color: pink;   
 }
 
+h1 {
+    font-family: 'Fredericka the Great', serif;
+    margin: 10px 0px 10px 0px;
+    color: rgb(252, 145, 162);
+}
+
 .input-container {
     display: flex;
     align-items: center;
@@ -30,8 +36,8 @@ body {
 
 .drawing-container {
     display: flex;
-    width: 500px;
-    height: 500px;
+    width: 420px;
+    height: 420px;
     background-color: white;
 }
 
