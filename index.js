@@ -1,6 +1,6 @@
 const container = document.querySelector(".drawing-container");
 
-let userNumber = 16;
+let defaultNum = 16;
 let isDrawing = false;
 
 window.addEventListener("mousedown", () => {
@@ -11,13 +11,18 @@ window.addEventListener("mouseup", () => {
     isDrawing = false;
 });
 
+createGrids(defaultNum);
+document.querySelector(".apply").addEventListener('click', setGrids);
+document.querySelector(".clear").addEventListener('click', clearGrids);
 
-for (let i = 0; i < userNumber; i++) {
+function createGrids(num) {
+
+for (let i = 0; i < num; i++) {
     const column = document.createElement("div");
     column.classList = "column";
     container.appendChild(column);
 
-    for (let i = 0; i < userNumber; i++) {
+    for (let i = 0; i < num; i++) {
     const square = document.createElement("div");
     square.classList = "square";
     column.appendChild(square);
@@ -28,6 +33,35 @@ for (let i = 0; i < userNumber; i++) {
 }
 }
 
+}
+
+function setGrids() {
+
+    const userEntry = document.querySelector('input').value;
+
+    if (userEntry === "e" || userEntry === '' || userEntry > 100 || userEntry < 1) {
+        alert("Please enter a number from 1 to 100");
+    } else {
+        deleteGrids();
+        createGrids(parseInt(userEntry));
+        defaultNum = parseInt(userEntry);
+    }
+}
+
+function deleteGrids() {
+    document.querySelectorAll('.square').forEach((box) => {
+        box.remove();
+    })
+
+    document.querySelectorAll('.column').forEach((c) => {
+        c.remove();
+    })
+}
+
+function clearGrids() {
+    deleteGrids();
+    createGrids(parseInt(defaultNum));
+}
 
 
 

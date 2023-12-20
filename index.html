@@ -7,9 +7,21 @@
     <link href="./styles.css" rel="stylesheet" />
 </head>
 <body>
+    <div class="input-container">
+        <p>Number of squares per side</p>
+        <input placeholder="max 100" type="number" min="1" max="100" name="input" class="input"/>
+        <button class="button apply" role="button">Apply</button>
+    </div>
 
-    <div class="drawing-container">
+    <div class="main-container">
+        <div class="options-container">
+            <button class="button" role="button">Black</button>
+            <button class="button" role="button">Rainbow</button>
+            <button class="button clear" role="button">Clear</button>    
+        </div>
 
+        <div class="drawing-container">
+        </div>
     </div>
 
     <script type="text/javascript" src="./index.js"></script>
